@@ -1,0 +1,38 @@
+<mat-card>
+	<mat-card-content>
+		<form [formGroup]="projectForm">
+
+			<mat-form-field>
+				<input matInput type="text" formControlName="title" id="title-project" placeholder="Titulo:" />
+				<mat-error *ngIf="projectForm.get('title').hasError">El titulo del proyecto es requerido</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput type="text" formControlName="type" id="tipe-project" placeholder="Tipo:" />
+				<mat-error *ngIf="projectForm.get('type').hasError">El tipo de proyecto es requerido</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput type="text" formControlName="state" id="state-project" placeholder="Estado:" />
+				<mat-error *ngIf="projectForm.get('state').hasError">El estado del proyecto es requerido</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput type="text" formControlName="product" id="product-project" placeholder="Producto:" />
+				<mat-error *ngIf="projectForm.get('product').hasError">El producto del proyecto es requerido</mat-error>
+			</mat-form-field>
+
+			<mat-form-field >
+				<mat-chip-list #chipList>
+					<mat-chip *ngFor="let technology of tecnologies" [selectable]="selectable" [removable]="removable" (remove)="remove(technology)">
+						{{technology}}
+						<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+					</mat-chip>
+					<input matInput placeholder="Tecnologias:" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+					 [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" matTooltip="Presione 'enter' luego de escribir la tecnologia para agregar a la lista."/>
+				</mat-chip-list>				
+			</mat-form-field>
+			<span *ngIf="showWarning" class="warning">La lista de tecnologias del proyecto es requerida</span>
+		</form>
+	</mat-card-content>
+</mat-card>
