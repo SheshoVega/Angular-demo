@@ -1,0 +1,4 @@
+<mat-chip-list class="mat-chip-list-stacked" aria-orientation="vertical">
+	<mat-chip *ngIf="showSuccess" class="msg success"><b>{{ msgOperation }} exitosamente :)</b></mat-chip>
+	<mat-chip *ngIf="showError" class="msg error"><b>Error al {{ msgOperation }} :(</b></mat-chip>
+</mat-chip-list>
