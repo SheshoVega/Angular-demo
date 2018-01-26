@@ -1,0 +1,17 @@
+mat-card {
+
+    margin: 1em;
+
+    mat-card-content{
+        width: 50%;
+        margin: 2% auto;
+    }
+
+    .card-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 1em;
+    }
+
+}

@@ -1,0 +1,10 @@
+<mat-card>
+	<mat-card-title>Crear Proyecto:</mat-card-title>
+	<app-messages [operation]="operation" [result]="result" *ngIf="showMsg"></app-messages>	
+	<mat-card-content>
+		<app-project-form (dataProject)="getDataProject($event)" [operation]="toCreate"></app-project-form>
+	</mat-card-content>
+	<mat-card-actions class="card-actions">
+		<button mat-raised-button color="primary" (click)="openCreateDialog()" [disabled]="btnDisabled">Crear Proyecto</button>
+	</mat-card-actions>
+</mat-card>
