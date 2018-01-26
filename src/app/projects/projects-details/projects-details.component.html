@@ -1,0 +1,19 @@
+<mat-card>
+	<a mat-icon-button color="primary" [routerLink]="['/projects/list']">
+		<mat-icon aria-label="Regresar">arrow_back</mat-icon>
+	</a>
+	<mat-card-title>
+		{{ project?.title }}
+	</mat-card-title>
+	<mat-card-content>
+		<mat-card class="project-info">
+			<p><b>Tipo:</b> {{ project?.type }}</p>
+			<p><b>Estado:</b> {{ project?.state }}</p>
+			<p><b>Producto:</b> {{ project?.product }}</p>
+			<mat-chip-list>
+				<b>Tecnolgias: </b>
+				<mat-chip color="primary" *ngFor="let tech of project?.tecnologies">{{ tech }}</mat-chip>
+			</mat-chip-list>
+		</mat-card>
+	</mat-card-content>
+</mat-card>
