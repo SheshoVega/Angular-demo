@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>{{ action }} Proyecto</h1>
+<mat-dialog-content>Desea {{ action }} el Proyecto: <b>{{ label }}</b> ?</mat-dialog-content>
+<mat-dialog-actions>
+	<button mat-button color="warn" (click)="cancel()">Cancelar</button>
+	<button mat-button color="primary" cdkFocusInitial (click)="accept()">{{ action }}</button>	
+</mat-dialog-actions>
