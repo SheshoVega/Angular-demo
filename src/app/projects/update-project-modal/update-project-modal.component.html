@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Actualizar Proyecto</h1>
+<app-messages [operation]="operation" [result]="result" *ngIf="showMsg"></app-messages>	
+<mat-dialog-content>
+	<app-project-form (dataProject)="getNewDataProject($event)" [operation]="toUpdate" [projectData]="project"></app-project-form>
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button mat-button color="warn" (click)="cancel()">Cancelar</button>
+	<button mat-button color="primary" cdkFocusInitial (click)="accept()" [disabled]="btnDisabled">Actualizar Proyecto</button>
+</mat-dialog-actions>
