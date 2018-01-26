@@ -1,0 +1,17 @@
+<mat-card>
+	<mat-card-title>Lista de Proyectos:</mat-card-title>
+	<app-messages [operation]="operation" [result]="result" *ngIf="showMsg"></app-messages>	
+	<mat-card-content class="projects-box">
+		<mat-card *ngFor="let project of projects" class="project-card">
+			<a mat-button [routerLink]="['/projects/', project._id]">
+				<mat-icon>code</mat-icon> {{ project.title }}
+			</a>
+			<button mat-icon-button color="warn" class="action-btn" (click)="openDeleteDialog(project._id, project.title)">
+				<mat-icon>delete</mat-icon>
+			</button>
+			<button mat-icon-button color="primary" class="action-btn" (click)="openUpdateDialog(project)">
+				<mat-icon>mode_edit</mat-icon>
+			</button>
+		</mat-card>
+	</mat-card-content>
+</mat-card>
