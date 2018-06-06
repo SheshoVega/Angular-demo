@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Project } from '../../core/models/project';
 import { MatChipInputEvent } from '@angular/material';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import "rxjs/add/operator/debounceTime";
+import { debounceTime } from 'rxjs/operators';
 import { ProjectsService } from '../projects.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-project-form',
@@ -46,7 +46,9 @@ export class ProjectFormComponent implements OnInit, OnDestroy {
 			product: ['', Validators.required]
 		});
 
-		this.projectForm.valueChanges.debounceTime(500).subscribe(val => {
+		this.projectForm.valueChanges.pipe(
+			debounceTime(500)
+		).subscribe(val => {
 			this.sendData();
 		});
 

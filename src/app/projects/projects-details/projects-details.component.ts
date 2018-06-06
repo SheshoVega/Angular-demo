@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 
 //RXJS operators
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 
 import { Project } from "../../core/models/project";
 import { ProjectsService } from '../projects.service';
@@ -24,7 +24,9 @@ export class ProjectsDetailsComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 
-		this.paramsSub = this.route.params.map(params => params['id']).subscribe(projectId => {
+		this.paramsSub = this.route.params.pipe(
+			map(params => params['id'])
+		).subscribe(projectId => {
 			this.projectsService.getProject(projectId).subscribe(
 				(data: Project) => {
 					console.log(data);
